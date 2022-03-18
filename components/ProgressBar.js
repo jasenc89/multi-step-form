@@ -16,7 +16,7 @@ const ProgressBar = ({ formSteps, currentStep }) => {
   const createProgressBar = formSteps.map((step, index) => {
     return (
       <div
-        className={`border-2 border-gray-200 ${setBorderRounding(
+        className={`w-1/4 border-2 border-gray-200 ${setBorderRounding(
           index,
           formSteps
         )}`}
@@ -30,7 +30,7 @@ const ProgressBar = ({ formSteps, currentStep }) => {
     );
   });
 
-  return <div className="flex">{createProgressBar}</div>;
+  return <div className="flex w-1/2 m-auto">{createProgressBar}</div>;
 };
 
 export default ProgressBar;

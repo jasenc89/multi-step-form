@@ -30,11 +30,11 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="w-1/2 m-auto">
-        <div className="flex align-center justify-center pt-12">
+      <div className="m-auto">
+        <div>
           <ProgressBar formSteps={steps} currentStep={step} />
         </div>
-        <div className="flex align-center justify-between">
+        <div className="w-3/4 m-auto flex align-center justify-between">
           <Button btnText="Back" onClick={decrementStep} />
           <Button
             btnText="Next"
