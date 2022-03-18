@@ -23,7 +23,6 @@ export default function Home() {
   const decrementStep = () => {
     if (step > 0) {
       setStep(step - 1);
-      console.log(step);
     }
   };
 
