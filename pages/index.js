@@ -1,10 +1,10 @@
 import Header from "../components/Header";
 import ProgressBar from "../components/ProgressBar";
 import Button from "../components/Button";
-import Introduction from "../components/Introduction";
-import PersonalDetails from "../components/personalDetails";
-import FinancialHistory from "../components/financialHistory";
-import Review from "../components/review";
+import Introduction from "../components/steps/Introduction";
+import PersonalDetails from "../components/steps/PersonalDetails";
+import FinancialHistory from "../components/steps/FinancialHistory";
+import Review from "../components/steps/Review";
 import { useState } from "react";
 
 export default function Home() {
@@ -45,11 +45,13 @@ export default function Home() {
     <div>
       <Header />
       <div className="m-auto">
-        <div>
+        <div className="mb-12">
           <ProgressBar formSteps={steps} currentStep={step} />
         </div>
 
-        <div className="w-3/4 m-auto text-center">{showPage()}</div>
+        <div className="w-3/4 m-auto flex justify-center text-center mb-12">
+          {showPage()}
+        </div>
 
         <div className="w-3/4 m-auto flex align-center justify-between">
           <Button btnText="Back" onClick={decrementStep} />
