@@ -33,6 +33,11 @@ export default function Home() {
         <div>
           <ProgressBar formSteps={steps} currentStep={step} />
         </div>
+
+        <div className="flex justify-center">
+          <Input />
+        </div>
+
         <div className="w-3/4 m-auto flex align-center justify-between">
           <Button btnText="Back" onClick={decrementStep} />
           <Button
