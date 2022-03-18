@@ -1,7 +1,10 @@
 import Header from "../components/Header";
 import ProgressBar from "../components/ProgressBar";
 import Button from "../components/Button";
-import Input from "../components/Input";
+import Introduction from "../components/Introduction";
+import PersonalDetails from "../components/personalDetails";
+import FinancialHistory from "../components/financialHistory";
+import Review from "../components/review";
 import { useState } from "react";
 
 export default function Home() {
@@ -26,6 +29,18 @@ export default function Home() {
     }
   };
 
+  const showPage = () => {
+    if (step === 0) {
+      return <Introduction />;
+    } else if (step === 1) {
+      return <PersonalDetails />;
+    } else if (step === 2) {
+      return <FinancialHistory />;
+    } else {
+      return <Review />;
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -34,9 +49,7 @@ export default function Home() {
           <ProgressBar formSteps={steps} currentStep={step} />
         </div>
 
-        <div className="flex justify-center">
-          <Input />
-        </div>
+        <div className="w-3/4 m-auto text-center">{showPage()}</div>
 
         <div className="w-3/4 m-auto flex align-center justify-between">
           <Button btnText="Back" onClick={decrementStep} />
