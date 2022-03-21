@@ -55,12 +55,20 @@ export default function Home() {
 
         <div className="w-3/4 m-auto flex align-center justify-between">
           <Button btnText="Back" onClick={decrementStep} />
-          <Button
-            btnText="Next"
-            bgColor="bg-primary"
-            textCol="text-white"
-            onClick={incrementStep}
-          />
+          {step === 3 ? (
+            <Button
+              btnText="Submit"
+              bgColor="bg-green-500"
+              textCol="text-white"
+            />
+          ) : (
+            <Button
+              btnText="Next"
+              bgColor="bg-primary"
+              textCol="text-white"
+              onClick={incrementStep}
+            />
+          )}
         </div>
       </div>
     </div>
