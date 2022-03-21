@@ -7,8 +7,9 @@ import FinancialHistory from "../components/steps/FinancialHistory";
 import Review from "../components/steps/Review";
 import { useState } from "react";
 
-export default function Home() {
+const Home = () => {
   const [step, setStep] = useState(0);
+  const [details, setDetails] = useState({});
 
   const steps = [
     "Introduction",
@@ -42,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="bg-slate-50 min-h-screen">
       <Header />
       <div className="m-auto">
         <div className="mb-12">
@@ -54,7 +55,7 @@ export default function Home() {
         </div>
 
         <div className="w-3/4 m-auto flex align-center justify-between">
-          <Button btnText="Back" onClick={decrementStep} />
+          <Button btnText="Back" bgColor="bg-white" onClick={decrementStep} />
           {step === 3 ? (
             <Button
               btnText="Submit"
@@ -73,4 +74,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

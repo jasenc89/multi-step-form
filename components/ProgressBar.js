@@ -1,7 +1,7 @@
 import ProgressStep from "./ProgressStep";
 
 const ProgressBar = ({ formSteps, currentStep }) => {
-  const setBorderRounding = (index, arr) => {
+  const setBorderRounding = (arr, index) => {
     if (index === 0) {
       return "rounded-l-lg";
     } else if (index === arr.length - 1) {
@@ -16,15 +16,16 @@ const ProgressBar = ({ formSteps, currentStep }) => {
   const createProgressBar = formSteps.map((step, index) => {
     return (
       <div
-        className={`w-1/4 border-2 border-gray-200 ${setBorderRounding(
-          index,
-          formSteps
+        className={`w-1/4 border-2 border-gray-200 bg-white ${setBorderRounding(
+          formSteps,
+          index
         )}`}
       >
         <ProgressStep
           stepNumber={index + 1}
           stepName={step}
           stepBorder={highlightStep(index)}
+          borderRounding={setBorderRounding(formSteps, index)}
         />
       </div>
     );

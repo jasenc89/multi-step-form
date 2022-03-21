@@ -1,9 +1,12 @@
-const Input = ({ placeholderText }) => {
+const Input = ({ labelText, placeholderText }) => {
   return (
-    <input
-      className="p-2 border-2 rounded-lg shadow-md"
-      placeholder={placeholderText}
-    />
+    <div className="flex flex-col">
+      <label className="text-left p-2">{labelText}</label>
+      <input
+        className="p-2 border-2 rounded-lg shadow-md"
+        placeholder={placeholderText}
+      />
+    </div>
   );
 };
 
