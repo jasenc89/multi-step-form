@@ -56,7 +56,7 @@ const Form = () => {
     <div className="m-auto">
       <ProgressBar formSteps={steps} currentStep={step} />
       <div className="w-[65%] mx-auto mt-12">
-        <form className="m-auto mb-12" action="">
+        <form className="m-auto mb-12" id="client-form" action="">
           <div>{showPage()}</div>
         </form>
 
@@ -67,6 +67,9 @@ const Form = () => {
               btnText="Submit"
               bgColor="bg-green-500"
               textCol="text-white"
+              form="client-form"
+              inputType="submit"
+              onClick={() => alert("form submitted")}
             />
           ) : (
             <Button

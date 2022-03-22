@@ -3,6 +3,7 @@ const Input = ({
   placeholderText,
   inputType,
   inputValue,
+  form,
   onChange,
 }) => {
   return (
@@ -15,6 +16,7 @@ const Input = ({
         onChange={onChange}
         type={inputType}
         value={inputValue}
+        form={form}
       />
     </div>
   );
