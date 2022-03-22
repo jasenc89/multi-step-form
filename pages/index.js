@@ -30,13 +30,13 @@ const Home = () => {
     "Review",
   ];
 
-  const incrementStep = () => {
+  const handleIncrement = () => {
     if (step < steps.length - 1) {
       setStep(step + 1);
     }
   };
 
-  const decrementStep = () => {
+  const handleDecrement = () => {
     if (step > 0) {
       setStep(step - 1);
     }
