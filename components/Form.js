@@ -28,18 +28,6 @@ const Form = () => {
     "Review",
   ];
 
-  const handleIncrement = () => {
-    if (step < steps.length - 1) {
-      setStep(step + 1);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (step > 0) {
-      setStep(step - 1);
-    }
-  };
-
   const showPage = () => {
     if (step === 0) {
       return <Introduction />;
@@ -52,34 +40,56 @@ const Form = () => {
     }
   };
 
+  const handleIncrement = (e) => {
+    e.preventDefault();
+    if (step < steps.length - 1) {
+      setStep(step + 1);
+    }
+  };
+
+  const handleDecrement = (e) => {
+    e.preventDefault();
+    if (step > 0) {
+      setStep(step - 1);
+    }
+  };
+
   return (
     <div className="m-auto">
       <ProgressBar formSteps={steps} currentStep={step} />
       <div className="w-[65%] mx-auto mt-12">
-        <form className="m-auto mb-12" id="client-form" action="">
+        <form
+          className="m-auto mb-12"
+          id="client-form"
+          onSubmit={() => alert("form submitted")}
+        >
           <div>{showPage()}</div>
+          <div className="flex align-center justify-between mt-8">
+            <Button
+              btnText="Back"
+              bgColor="bg-white"
+              onClick={handleDecrement}
+              inputType="button"
+            />
+            {step === steps.length - 1 ? (
+              <Button
+                btnText="Submit"
+                bgColor="bg-green-500"
+                textCol="text-white"
+                form="client-form"
+                type="submit"
+              />
+            ) : (
+              <Button
+                btnText="Next"
+                bgColor="bg-primary"
+                textCol="text-white"
+                onClick={handleIncrement}
+                type="button"
+              />
+            )}
+          </div>
         </form>
-
-        <div className="flex align-center justify-between mt-8">
-          <Button btnText="Back" bgColor="bg-white" onClick={handleDecrement} />
-          {step === 3 ? (
-            <Button
-              btnText="Submit"
-              bgColor="bg-green-500"
-              textCol="text-white"
-              form="client-form"
-              inputType="submit"
-              onClick={() => alert("form submitted")}
-            />
-          ) : (
-            <Button
-              btnText="Next"
-              bgColor="bg-primary"
-              textCol="text-white"
-              onClick={handleIncrement}
-            />
-          )}
-        </div>
       </div>
     </div>
   );
