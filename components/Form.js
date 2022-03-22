@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const Form = () => {
   const [step, setStep] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,14 +30,22 @@ const Form = () => {
   ];
 
   const showPage = () => {
-    if (step === 0) {
-      return <Introduction />;
-    } else if (step === 1) {
-      return <PersonalDetails formData={formData} setFormData={setFormData} />;
-    } else if (step === 2) {
-      return <FinancialHistory formData={formData} setFormData={setFormData} />;
+    if (!formSubmitted) {
+      if (step === 0) {
+        return <Introduction />;
+      } else if (step === 1) {
+        return (
+          <PersonalDetails formData={formData} setFormData={setFormData} />
+        );
+      } else if (step === 2) {
+        return (
+          <FinancialHistory formData={formData} setFormData={setFormData} />
+        );
+      } else {
+        return <Review />;
+      }
     } else {
-      return <Review />;
+      return <h1>form submitted!</h1>;
     }
   };
 
@@ -54,15 +63,17 @@ const Form = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("data submitted");
+    setFormSubmitted(true);
+  };
+
   return (
     <div className="m-auto">
       <ProgressBar formSteps={steps} currentStep={step} />
       <div className="w-[65%] mx-auto mt-12">
-        <form
-          className="m-auto mb-12"
-          id="client-form"
-          onSubmit={() => alert("form submitted")}
-        >
+        <form className="m-auto mb-12" id="client-form" onSubmit={handleSubmit}>
           <div>{showPage()}</div>
           <div className="flex align-center justify-between mt-8">
             <Button
@@ -70,6 +81,7 @@ const Form = () => {
               bgColor="bg-white"
               onClick={handleDecrement}
               inputType="button"
+              disabled={step === 0}
             />
             {step === steps.length - 1 ? (
               <Button
