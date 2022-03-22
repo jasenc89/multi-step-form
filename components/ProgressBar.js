@@ -16,6 +16,7 @@ const ProgressBar = ({ formSteps, currentStep }) => {
   const createProgressBar = formSteps.map((step, index) => {
     return (
       <div
+        key={index}
         className={`w-1/4 border-2 border-gray-200 bg-white ${setBorderRounding(
           formSteps,
           index
