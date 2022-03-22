@@ -67,7 +67,7 @@ const Home = () => {
         </div>
 
         <div className="w-[65%] m-auto flex align-center justify-between">
-          <Button btnText="Back" bgColor="bg-white" onClick={decrementStep} />
+          <Button btnText="Back" bgColor="bg-white" onClick={handleDecrement} />
           {step === 3 ? (
             <Button
               btnText="Submit"
@@ -79,7 +79,7 @@ const Home = () => {
               btnText="Next"
               bgColor="bg-primary"
               textCol="text-white"
-              onClick={incrementStep}
+              onClick={handleIncrement}
             />
           )}
         </div>
