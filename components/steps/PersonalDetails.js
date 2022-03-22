@@ -2,8 +2,6 @@ import Input from "../Input";
 import Button from "../Button";
 
 const PersonalDetails = ({ formData, setFormData }) => {
-  console.log(formData);
-
   return (
     <div>
       <section className="flex justify-between border-b-2 pb-4 mb-4">

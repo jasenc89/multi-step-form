@@ -18,6 +18,7 @@ const Form = () => {
     postcode: "",
     emailAddress: "",
     phoneNumber: "",
+    isaProvider: "",
   });
 
   const steps = [
@@ -45,7 +46,7 @@ const Form = () => {
     } else if (step === 1) {
       return <PersonalDetails formData={formData} setFormData={setFormData} />;
     } else if (step === 2) {
-      return <FinancialHistory />;
+      return <FinancialHistory formData={formData} setFormData={setFormData} />;
     } else {
       return <Review />;
     }
