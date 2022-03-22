@@ -90,6 +90,7 @@ const PersonalDetails = ({ formData, setFormData }) => {
               setFormData({ ...formData, emailAddress: e.target.value })
             }
             inputValue={formData.emailAddress}
+            inputType="email"
           />
           <Input
             labelText="Phone number"
