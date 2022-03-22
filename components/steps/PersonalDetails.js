@@ -1,7 +1,9 @@
 import Input from "../Input";
 import Button from "../Button";
 
-const PersonalDetails = () => {
+const PersonalDetails = ({ formData, setFormData }) => {
+  console.log(formData);
+
   return (
     <div>
       <section className="flex justify-between border-b-2 pb-4 mb-4">
@@ -9,9 +11,28 @@ const PersonalDetails = () => {
           Personal information
         </h2>
         <div className="w-[60%] bg-white shadow p-8 rounded-lg flex flex-wrap gap-8">
-          <Input labelText="First name" />
-          <Input labelText="Last name" />
-          <Input labelText="Date of birth" placeholderText="DD/MM/YYYY" />
+          <Input
+            labelText="First name"
+            onChange={(e) =>
+              setFormData({ ...formData, firstName: e.target.value })
+            }
+            inputValue={formData.firstName}
+          />
+          <Input
+            labelText="Last name"
+            onChange={(e) =>
+              setFormData({ ...formData, lastName: e.target.value })
+            }
+            inputValue={formData.lastName}
+          />
+          <Input
+            labelText="Date of birth"
+            placeholderText="DD/MM/YYYY"
+            onChange={(e) =>
+              setFormData({ ...formData, dateOfBirth: e.target.value })
+            }
+            inputValue={formData.dateOfBirth}
+          />
         </div>
       </section>
 
@@ -20,7 +41,13 @@ const PersonalDetails = () => {
           Address information
         </h2>
         <div className="w-[60%] bg-white shadow p-8 rounded-lg flex flex-wrap gap-8">
-          <Input labelText="Postcode" />
+          <Input
+            labelText="Postcode"
+            onChange={(e) =>
+              setFormData({ ...formData, postcode: e.target.value })
+            }
+            inputValue={formData.postcode}
+          />
           <div>
             <Button
               btnText="Find my address"
@@ -28,9 +55,27 @@ const PersonalDetails = () => {
               bgColor="bg-primary"
             />
           </div>
-          <Input labelText="Address line 1" />
-          <Input labelText="Address line 2" />
-          <Input labelText="Address line 3" />
+          <Input
+            labelText="Address line 1"
+            onChange={(e) =>
+              setFormData({ ...formData, addressLineOne: e.target.value })
+            }
+            inputValue={formData.addressLineOne}
+          />
+          <Input
+            labelText="Address line 2"
+            onChange={(e) =>
+              setFormData({ ...formData, addressLineTwo: e.target.value })
+            }
+            inputValue={formData.addressLineTwo}
+          />
+          <Input
+            labelText="Address line 3"
+            onChange={(e) =>
+              setFormData({ ...formData, addressLineThree: e.target.value })
+            }
+            inputValue={formData.addressLineThree}
+          />
         </div>
       </section>
 
@@ -39,8 +84,20 @@ const PersonalDetails = () => {
           Contact information
         </h2>
         <div className="w-[60%] bg-white shadow p-8 rounded-lg flex flex-wrap gap-8">
-          <Input labelText="Email address" />
-          <Input labelText="Phone number" />
+          <Input
+            labelText="Email address"
+            onChange={(e) =>
+              setFormData({ ...formData, emailAddress: e.target.value })
+            }
+            inputValue={formData.emailAddress}
+          />
+          <Input
+            labelText="Phone number"
+            onChange={(e) =>
+              setFormData({ ...formData, phoneNumber: e.target.value })
+            }
+            inputValue={formData.phoneNumber}
+          />
         </div>
       </section>
     </div>

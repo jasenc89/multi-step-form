@@ -1,6 +1,10 @@
-const Input = ({ labelText, placeholderText, onChange }) => {
-  const validateField = () => {};
-
+const Input = ({
+  labelText,
+  placeholderText,
+  inputType,
+  inputValue,
+  onChange,
+}) => {
   return (
     <div className="flex flex-col">
       <label className="text-left p-2">{labelText}</label>
@@ -9,6 +13,8 @@ const Input = ({ labelText, placeholderText, onChange }) => {
         placeholder={placeholderText}
         required
         onChange={onChange}
+        type={inputType}
+        value={inputValue}
       />
     </div>
   );
