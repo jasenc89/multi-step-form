@@ -54,12 +54,11 @@ const Form = () => {
 
   return (
     <div className="m-auto">
-      <div className="mb-12">
-        <ProgressBar formSteps={steps} currentStep={step} />
-      </div>
-
-      <form className="w-[65%] m-auto text-center mb-12" action="">
-        <div>{showPage()}</div>
+      <ProgressBar formSteps={steps} currentStep={step} />
+      <div className="w-[65%] mx-auto mt-12">
+        <form className="m-auto mb-12" action="">
+          <div>{showPage()}</div>
+        </form>
 
         <div className="flex align-center justify-between mt-8">
           <Button btnText="Back" bgColor="bg-white" onClick={handleDecrement} />
@@ -78,7 +77,7 @@ const Form = () => {
             />
           )}
         </div>
-      </form>
+      </div>
     </div>
   );
 };
