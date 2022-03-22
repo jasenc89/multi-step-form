@@ -9,7 +9,19 @@ import { useState } from "react";
 
 const Home = () => {
   const [step, setStep] = useState(0);
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    address: {
+      lineOne: "",
+      lineTwo: "",
+      lineThree: "",
+      postcode: "",
+    },
+    emailAddress: "",
+    phoneNumber: "",
+  });
 
   const steps = [
     "Introduction",
@@ -43,18 +55,18 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen pb-12">
       <Header />
       <div className="m-auto">
         <div className="mb-12">
           <ProgressBar formSteps={steps} currentStep={step} />
         </div>
 
-        <div className="w-3/4 m-auto flex justify-center text-center mb-12">
-          {showPage()}
+        <div className="w-[65%] m-auto text-center mb-12">
+          <form action="">{showPage()}</form>
         </div>
 
-        <div className="w-3/4 m-auto flex align-center justify-between">
+        <div className="w-[65%] m-auto flex align-center justify-between">
           <Button btnText="Back" bgColor="bg-white" onClick={decrementStep} />
           {step === 3 ? (
             <Button

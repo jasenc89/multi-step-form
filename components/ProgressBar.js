@@ -31,7 +31,7 @@ const ProgressBar = ({ formSteps, currentStep }) => {
     );
   });
 
-  return <div className="flex w-1/2 m-auto">{createProgressBar}</div>;
+  return <div className="flex w-[60%] m-auto">{createProgressBar}</div>;
 };
 
 export default ProgressBar;
