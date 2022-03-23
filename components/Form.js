@@ -6,6 +6,7 @@ import FinancialHistory from "./steps/FinancialHistory";
 import Review from "./steps/Review";
 import FormSubmitted from "./steps/FormSubmitted";
 import { useState } from "react";
+import axios from "axios";
 
 const Form = () => {
   const [step, setStep] = useState(0);
@@ -58,8 +59,13 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("data submitted");
-    setFormSubmitted(true);
+    axios({
+      method: "post",
+      url: "/api/submit",
+      data: formData,
+    }).then(() => {
+      setFormSubmitted(true);
+    });
   };
 
   return (

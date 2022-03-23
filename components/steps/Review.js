@@ -5,6 +5,7 @@ const Review = ({ formData }) => {
     return Object.entries(formData).map((key, index) => {
       return (
         <ReviewDetail
+          key={index}
           label={
             key[0].charAt(0).toUpperCase() +
             key[0]
