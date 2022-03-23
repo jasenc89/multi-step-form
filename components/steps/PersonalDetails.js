@@ -46,7 +46,7 @@ const PersonalDetails = ({ formData, setFormData }) => {
             }
             inputValue={formData.postcode}
           />
-          <div>
+          <div className="flex items-end">
             <Button
               btnText="Find my address"
               textCol="text-white"

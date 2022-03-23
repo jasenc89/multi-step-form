@@ -69,11 +69,7 @@ const Form = () => {
         {formSubmitted ? (
           <FormSubmitted />
         ) : (
-          <form
-            className="m-auto mb-12"
-            id="client-form"
-            onSubmit={handleSubmit}
-          >
+          <form className="m-auto mb-12" onSubmit={handleSubmit}>
             <div>{showPage()}</div>
             <div className="flex align-center justify-between mt-8">
               <Button
@@ -88,7 +84,6 @@ const Form = () => {
                   btnText="Submit"
                   bgColor="bg-green-500"
                   textCol="text-white"
-                  form="client-form"
                   type="submit"
                 />
               ) : (
