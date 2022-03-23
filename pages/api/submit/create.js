@@ -1,7 +1,13 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import connect from "../../../utils/database";
 
-export default function handler(req, res) {
+const handler = async (req, res) => {
   res.status(200).json({ message: "success" });
 
+  const { db } = await connect();
   const clientData = req.body;
-}
+  const result = await db.collection("clients").insertOne({
+    client: clientData,
+  });
+};
+
+export default handler;
