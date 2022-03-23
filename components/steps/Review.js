@@ -23,7 +23,7 @@ const Review = ({ formData }) => {
       <h2 className="text-lg border-b-2 pb-4 mb-4 font-bold text-primary">
         Review your details
       </h2>
-      <div>{createReviewDetails()}</div>
+      <div className="w-[75%] mx-auto">{createReviewDetails()}</div>
     </div>
   );
 };
