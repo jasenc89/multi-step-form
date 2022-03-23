@@ -61,7 +61,7 @@ const Form = () => {
     e.preventDefault();
     axios({
       method: "post",
-      url: "/api/submit",
+      url: "/api/submit/create",
       data: formData,
     }).then(() => {
       setFormSubmitted(true);
