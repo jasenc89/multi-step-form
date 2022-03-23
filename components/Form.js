@@ -38,7 +38,7 @@ const Form = () => {
     } else if (step === 2) {
       return <FinancialHistory formData={formData} setFormData={setFormData} />;
     } else {
-      return <Review />;
+      return <Review formData={formData} />;
     }
   };
 
