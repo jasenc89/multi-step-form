@@ -7,6 +7,7 @@ import Review from "./steps/Review";
 import FormSubmitted from "./steps/FormSubmitted";
 import { useState } from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Form = () => {
   const [step, setStep] = useState(0);
