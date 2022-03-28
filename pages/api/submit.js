@@ -35,10 +35,8 @@ const handler = async (req, res) => {
         }
       );
       const captchaValidation = await response.json();
-      console.log(captchaValidation);
-      console.log(captchaValidation.success);
       /**
-       * The structure of response from the veirfy API is
+       * Response structure from API
        * {
        *  "success": true|false,
        *  "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
@@ -48,9 +46,8 @@ const handler = async (req, res) => {
        */
       if (captchaValidation.success) {
         const { db } = await connect();
-        const clientData = req.body;
         const result = await db.collection("clients").insertOne({
-          client: clientData,
+          client: formData,
         });
         await sleep();
         // Return 200 if everything is successful
@@ -65,8 +62,7 @@ const handler = async (req, res) => {
       return res.status(422).json({ message: "Something went wrong" });
     }
   }
-  // Return 404 if someone pings the API with a method other than
-  // POST
+  // Return 405 if someone pings the API with a method other than POST
   return res.status(405).send("Method not allowed");
 };
 
