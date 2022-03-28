@@ -5,8 +5,8 @@ import PersonalDetails from "./steps/PersonalDetails";
 import FinancialHistory from "./steps/FinancialHistory";
 import Review from "./steps/Review";
 import FormSubmitted from "./steps/FormSubmitted";
-import { useState } from "react";
-import axios from "axios";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Form = () => {
   const [step, setStep] = useState(0);
@@ -23,6 +23,8 @@ const Form = () => {
     phoneNumber: "",
     isaProvider: "",
   });
+
+  const recaptchaRef = useRef();
 
   const steps = [
     "Introduction",
@@ -59,13 +61,50 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios({
-      method: "post",
-      url: "/api/submit/create",
-      data: formData,
-    }).then(() => {
-      setFormSubmitted(true);
-    });
+    // Execute the reCAPTCHA when the form is submitted
+    recaptchaRef.current.execute();
+    console.log(recaptchaRef.current);
+  };
+
+  const onReCAPTCHAChange = async (captchaCode) => {
+    // If the reCAPTCHA code is null or undefined indicating that
+    // the reCAPTCHA was expired then return early
+    if (!captchaCode) {
+      return;
+    }
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        body: JSON.stringify({ formData, captcha: captchaCode }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        // If the response is ok than show the success alert
+        setFormSubmitted(true);
+      } else {
+        // Else throw an error with the message returned
+        // from the API
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      alert(error?.message || "Something went wrong");
+    } finally {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        addressLineOne: "",
+        addressLineTwo: "",
+        addressLineThree: "",
+        postcode: "",
+        emailAddress: "",
+        phoneNumber: "",
+        isaProvider: "",
+      });
+    }
   };
 
   return (
@@ -76,6 +115,12 @@ const Form = () => {
           <FormSubmitted />
         ) : (
           <form className="m-auto mb-12" onSubmit={handleSubmit}>
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              size="invisible"
+              ref={recaptchaRef}
+              onChange={onReCAPTCHAChange}
+            />
             <div>{showPage()}</div>
             <div className="flex align-center justify-between mt-8">
               <Button
